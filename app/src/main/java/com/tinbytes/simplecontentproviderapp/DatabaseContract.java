@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 tinbytes.com
+ * Copyright 2015 Tinbytes Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 
 package com.tinbytes.simplecontentproviderapp;
 
+import android.content.ContentResolver;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
@@ -34,8 +35,8 @@ public class DatabaseContract {
     public static final String TABLE_NAME = "note";
     public static final String URI_PATH = "note";
     public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + URI_PATH);
-    public static final String CONTENT_TYPE = "vnd.android.cursor.dir/" + URI_PATH;
-    public static final String CONTENT_NOTE_TYPE = "vnd.android.cursor.item/" + URI_PATH;
+    public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + URI_PATH;
+    public static final String CONTENT_NOTE_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + URI_PATH;
 
     private NoteTable() {
     }
@@ -50,8 +51,8 @@ public class DatabaseContract {
     public static final String TABLE_NAME = "label";
     public static final String URI_PATH = "label";
     public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + URI_PATH);
-    public static final String CONTENT_TYPE = "vnd.android.cursor.dir/" + URI_PATH;
-    public static final String CONTENT_LABEL_TYPE = "vnd.android.cursor.item/" + URI_PATH;
+    public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + URI_PATH;
+    public static final String CONTENT_LABEL_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + URI_PATH;
 
     private LabelTable() {
     }
@@ -67,7 +68,7 @@ public class DatabaseContract {
     public static final String TABLE_NAME = "note_label";
     public static final String URI_PATH = "note_label";
     public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + NoteTable.URI_PATH + "/#/" + LabelTable.URI_PATH);
-    public static final String CONTENT_TYPE = "vnd.android.cursor.dir/" + URI_PATH;
+    public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + URI_PATH;
 
     private NoteLabelTable() {
     }
